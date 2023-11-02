@@ -1,24 +1,23 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
+import {AuthContextProvider, AuthProvider} from "./config/auth-context";
+import Sandbox from "./pages/sandbox";
+import Login from "./pages/Login";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className={"d-flex"}>
+          <AuthContextProvider>
+
+              <Routes>
+                  <Route path={'/'} element={<Login />} />
+                  <Route path={'sand'} element={<Sandbox />} />
+              </Routes>
+          </AuthContextProvider>
+
+      </div>
   );
 }
 
