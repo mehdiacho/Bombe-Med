@@ -25,6 +25,10 @@ const Login = () => {
         }
     };
 
+    function signUpClick() {
+        navigate("/signup")
+    }
+
     return (
         <div className="container-fluid min-vh-100 bg-light d-flex flex-column">
             <div className="row justify-content-center align-items-center min-vh-100">
@@ -64,6 +68,15 @@ const Login = () => {
                                     style={{ borderRadius: '20px' }}
                                 >
                                     Log In
+                                </button>
+                                <div></div>
+                                <button
+                                    type="button"
+                                    className={`btn btn-outline-primary`}
+                                    onClick={signUpClick}
+                                    style={{ borderRadius: '20px' }}
+                                >
+                                    Create An Account
                                 </button>
                             </div>
                         </form>
