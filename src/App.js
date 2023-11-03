@@ -1,24 +1,21 @@
 import React from 'react';
-import './App.css';
-import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
-import {AuthContextProvider, AuthProvider} from "./config/auth-context";
-import Sandbox from "./pages/sandbox";
+import {Route, Routes } from "react-router-dom";
+import { AuthContextProvider} from "./config/auth-context";
 import Login from "./pages/Login";
-
+import Home from "./pages/Home"
 
 function App() {
-  return (
-      <div className={"d-flex"}>
-          <AuthContextProvider>
+    return (
+        <div className={"d-flex"}>
+            <AuthContextProvider>
+                <Routes>
+                    <Route path={'/'} element={<Login />} />
+                    <Route path={'/home'} element={<Home />} />
+                </Routes>
+            </AuthContextProvider>
 
-              <Routes>
-                  <Route path={'/'} element={<Login />} />
-                  <Route path={'sand'} element={<Sandbox />} />
-              </Routes>
-          </AuthContextProvider>
-
-      </div>
-  );
+        </div>
+    );
 }
 
 export default App;

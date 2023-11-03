@@ -1,22 +1,17 @@
-import{
+import {
     createUserWithEmailAndPassword,
-    signInWithPopup,
     signInWithEmailAndPassword,
     signOut,
-    sendPasswordResetEmail,
-    sendEmailVerification,
     onAuthStateChanged
 } from "firebase/auth";
-import {createContext, useContext, useEffect, useState} from "react";
-import { auth, googleProvider} from "./firebase";
-//import {Outlet, Link, useNavigate} from "react-router-dom";
+import { createContext, useContext, useEffect, useState } from "react";
+import { auth} from "./firebase";
 
 
 const UserContext = createContext()
+export const AuthContextProvider = ({ children }) => {
 
-
-
-export const AuthContextProvider = ({children}) => {
+    const [user, setUser] = useState({});
 
     const createUser = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password)
@@ -24,15 +19,22 @@ export const AuthContextProvider = ({children}) => {
     const signIn = (email, password) => {
         return signInWithEmailAndPassword(auth, email, password)
     }
-    const googleSignIn = () => {
-        return signInWithPopup(auth, googleProvider)
-    }
-    const logOut = () => {
+    const logout = () => {
         return signOut(auth)
     }
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            console.log(currentUser);
+            setUser(currentUser);
+        });
+        return () => {
+            unsubscribe();
+        };
+    }, []);
 
-    return(
-        <UserContext.Provider value={{createUser, signIn, logOut}}>
+
+    return (
+        <UserContext.Provider value={{ createUser, user, signIn, logout }}>
             {children}
         </UserContext.Provider>
     )
