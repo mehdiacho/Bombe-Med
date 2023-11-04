@@ -6,9 +6,9 @@ import { UserAuth } from "../config/auth-context";
 const Signup = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
-    const [error, setError] = useState("");
-    const [loading, setLoading] = useState(false)
+    const [setConfirmPassword] = useState("");
+    const [setError] = useState("");
+    const [setLoading] = useState(false)
     const [state, setState] = useState('not-visually-hidden')
 
     const navigate = useNavigate()
@@ -38,7 +38,6 @@ const Signup = () => {
     function logInClick() {
         navigate("/")
     }
-
     return (
         <div className="container-fluid min-vh-100 bg-light d-flex flex-column">
             <div className="row justify-content-center align-items-center min-vh-100">

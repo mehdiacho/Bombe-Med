@@ -18,7 +18,7 @@ const Login = () => {
         try {
             await signIn(email, password)
             alert("Sign in successful")
-            navigate('/home')
+            navigate('/homepage')
         } catch (e) {
 
             alert("Sign in Unsuccessful")
