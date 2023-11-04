@@ -4,6 +4,7 @@ import { AuthContextProvider} from "./config/auth-context";
 import Login from "./pages/Login";
 import HomePage from "./pages/HomePage"
 import Signup from './pages/Signup';
+import Prescription from './pages/Prescription';
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
                     <Route path={'/'} element={<Login />} />
                     <Route path={'signup'} element={<Signup/>}/>
                     <Route path={'/homepage'} element={<HomePage />} />
+                    <Route path={'/prescription'} element={<Prescription/>}/>
                 </Routes>
             </AuthContextProvider>
 

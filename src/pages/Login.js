@@ -76,7 +76,7 @@ const Login = () => {
                                     type="button"
                                     className={`btn btn-outline-primary`}
                                     onClick={signUpClick}
-                                    style={{ borderRadius: '20px' }}
+                                    style={{ borderRadius: '20px', marginTop:'10px' }}
                                 >
                                     Create An Account
                                 </button>

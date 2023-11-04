@@ -2,13 +2,15 @@ import { useState } from "react";
 import { auth } from "../config/firebase";
 import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../config/auth-context";
+import { database } from "../config/firebase";
+import { collection, addDoc } from "@firebase/firestore";
 
 const Signup = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [setConfirmPassword] = useState("");
-    const [setError] = useState("");
-    const [setLoading] = useState(false)
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [Error, setError] = useState("");
+    const [Loading, setLoading] = useState(false)
     const [state, setState] = useState('not-visually-hidden')
 
     const navigate = useNavigate()
@@ -23,10 +25,17 @@ const Signup = () => {
         try {
             setError("")
             setLoading(true)
+
             await createUser(email, password)
+
+            //create a document in "users" collection with user information
+        await addDoc(collection(database, 'patients'),{
+            email: email,
+            // Add additional fields as needed
+          });
             console.log(auth?.currentUser?.email);
             alert("You have successfully created a new account")
-            navigate("/home")
+            navigate("/homepage")
             setState('not-visually-hidden')
         } catch {
             alert("Failed to sign up")
@@ -99,7 +108,7 @@ const Signup = () => {
                                     type="button"
                                     className={`btn btn-outline-primary ${state}`}
                                     onClick={logInClick}
-                                    style={{ borderRadius: '20px' }}
+                                    style={{ borderRadius: '20px', marginTop:'10px' }}
                                 >
                                     Log In To Existing Account
                                 </button>
