@@ -61,7 +61,7 @@ const Login = () => {
                                 <button
                                     type="submit"
                                     className={`btn btn-outline-success`}
-                                    style={{ borderRadius: '20px' }}
+                                    style={{ borderRadius: '20px'}}
                                 >
                                     Log In
                                 </button>
