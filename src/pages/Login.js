@@ -45,6 +45,7 @@ const Login = () => {
                                     className="form-control text-bg-light border border-dark border-3"
                                     id="inputEmail"
                                     aria-describedby="emailHelp"
+                                    style={{ borderRadius: '20px' }}
                                     onChange={(e) => setEmail(e.target.value)}
 
                                 />
@@ -57,6 +58,7 @@ const Login = () => {
                                     type="password"
                                     className="form-control text-bg-light border border-dark border-3"
                                     id="inputPassword"
+                                    style={{ borderRadius: '20px' }}
                                     onChange={(e) => setPassword(e.target.value)}
 
                                 />
