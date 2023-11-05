@@ -48,7 +48,7 @@ const SuppliersTable = () => {
         <thead>
             <td></td>
           <tr>
-            <th>Supplier Name</th>
+            <th>Supplier Names</th>
             <th>Contacts</th>
             <th>Products</th>
             <th>Location</th>
