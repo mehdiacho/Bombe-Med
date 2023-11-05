@@ -7,18 +7,18 @@ import { useNavigate } from 'react-router-dom'
 
 const TopNav = () => {
 
-  const {logout} = UserAuth();
+  const { logout } = UserAuth();
   const navigate = useNavigate();
 
   const handleLogout = async () => {
     try {
-        await logout();
-        navigate('/');
-        alert('Logging out')
+      await logout();
+      navigate('/');
+      alert('Logging out')
     } catch (e) {
-        console.log(e.message);
+      console.log(e.message);
     }
-};
+  };
 
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
@@ -32,15 +32,14 @@ const TopNav = () => {
             navbarScroll
           >
             <Nav.Link href="/homepage">Home</Nav.Link>
-            <Nav.Link href="#action2">Browse</Nav.Link>
-            <NavDropdown title="Buy" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">Medication</NavDropdown.Item>
+            <Nav.Link href="/cart">Cart</Nav.Link>
+            <NavDropdown title="View" id="navbarScrollingDropdown">
+              <NavDropdown.Item href="#action3">Orders</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action5">
-                Other items
+              <NavDropdown.Item href="/prescription">
+                Prescription
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="#action2">Settings</Nav.Link>
           </Nav>
           <Form className="d-flex">
             <Button variant="outline-danger" onClick={handleLogout}>Logout</Button>

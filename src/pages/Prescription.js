@@ -1,21 +1,33 @@
-import React from 'react'
+import React from 'react';
 import 'react-multi-carousel/lib/styles.css';
-import { Nav, Navbar, Container, Button, Form, NavDropdown, Card, Col, Row } from 'react-bootstrap'
+import { Button, Form, Row } from 'react-bootstrap';
 
 const Prescription = () => {
   return (
-    <div>
-      <form>
-        <Button
-          type="button"
-          variant="outline-primary"
-          className={"button"}
-        >
-          Load Prescription
-        </Button>
-      </form>
-    </div>
-  )
-}
+    <div className='container'>
+      <Form>
+        <Row className='d-flex justify-content-center align-items-center mt-5' >
+          <div className='border p-4' style={{marginTop:'300px'}}>
+            <div className='d-flex justify-content-center align-items-center'>
+              <div className='mr-3'>Emeka</div>
+              <Button type="button" variant="success" className="button" style={{ borderRadius: '20px' }}>
+                +
+              </Button>
+              <Button type="button" variant="danger" className="button" style={{ borderRadius: '20px' }}>
+                -
+              </Button>
+            </div>
+          </div>
+        </Row>
+        <div className="d-flex align-items-center justify-content-center">
+          <Button type="button" variant="primary" className="search-button mt-4 mx-auto">
+            Search
+          </Button>
+        </div>
 
-export default Prescription
+      </Form>
+    </div>
+  );
+}
+// Consider using a table instead of
+export default Prescription;

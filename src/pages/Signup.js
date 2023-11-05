@@ -8,9 +8,9 @@ import { collection, addDoc } from "@firebase/firestore";
 const Signup = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
-    const [Error, setError] = useState("");
-    const [Loading, setLoading] = useState(false)
+    const [setConfirmPassword] = useState("");
+    const [setError] = useState("");
+    const [setLoading] = useState(false)
     const [state, setState] = useState('not-visually-hidden')
 
     const navigate = useNavigate()
