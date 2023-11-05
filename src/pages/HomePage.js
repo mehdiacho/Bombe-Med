@@ -1,88 +1,78 @@
-import React from 'react'
+import React, {useState} from 'react'
 import TopNav from './components/TopNav'
 import 'react-multi-carousel/lib/styles.css';
-import { Button, Card, Col, Row } from 'react-bootstrap'
+import {Button, Card, Col, Form, Row} from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
 
 
 const HomePage = () => {
     const navigate = useNavigate();
+    const [search, setSearch] = useState("")
+    const [searchResults, setSearchResults] = useState([]);
+
+
+    const fetchMedicineData = async (searchTerm) => {
+        const url = `http://localhost:8383/facilities/search-medicine?medicine=${encodeURIComponent(searchTerm)}`;
+        try {
+            const response = await fetch(url);
+            if (response.ok) {
+                const data = await response.json();
+                console.log("received" + data)
+                setSearchResults(data)
+                return data;
+            } else {
+                throw new Error('Search failed');
+            }
+        } catch (error) {
+            console.error('Error fetching medicine data', error);
+            return null;
+        }
+    };
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const data = await fetchMedicineData(search);
+            if (data) {
+                setSearchResults(data);
+            }
+        } catch (error) {
+            alert('Search failed');
+        }
+    };
+
 
 
     return (
         <div className={"container-fluid min-vh-100 bg-light d-flex flex-column home-page"} >
             <TopNav />
-            <input className='form-control mr-sm-2 w-8 mx-auto mt-8' type="search" style={{ marginTop: '30px', marginBottom: '20px', width: '520px', height: '55px', borderRadius: '20px' }} placeholder="Search for medication....." aria-label="Search" />
+            <Form onSubmit={handleSubmit}>
+                <input className='form-control mr-sm-2 w-8 mx-auto mt-8' type="search"
+                       style={{ marginTop: '30px', marginBottom: '20px', width: '520px', height: '55px', borderRadius: '20px' }}
+                       placeholder="Search for medication....." aria-label="Search"
+                       onChange={(e) => setSearch(e.target.value)}/>
+            </Form>
             <h4 style={{ marginTop: '35px' }}>What would you like to buy?</h4>
 
             <Row>
-                <Col sm={12} md={6} lg={4}>
-                    <Card className="item-box" style={{ marginBottom: '20px' }}>
-                        <Card.Img variant="top" src="fero.png" alt="product" />
-                        <Card.Body>
-                            <Card.Title>Item 1</Card.Title>
-                            <Card.Text>
-                                Price: P40.00
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-                </Col>
-                <Col sm={12} md={6} lg={4}>
-                    <Card className="item-box" style={{ marginBottom: '20px' }}>
-                        <Card.Img variant="top" src="fero.png" alt="product" />
-                        <Card.Body>
-                            <Card.Title>Item 2</Card.Title>
-                            <Card.Text>
-                                Price: P40.00
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-                </Col>
-                <Col sm={12} md={6} lg={4}>
-                    <Card className="item-box" style={{ marginBottom: '20px' }}>
-                        <Card.Img variant="top" src="fero.png" alt="product" />
-                        <Card.Body>
-                            <Card.Title>Item 3</Card.Title>
-                            <Card.Text>
-                                Price: P40.00
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-                </Col>
-                <Col sm={12} md={6} lg={4}>
-                    <Card className="item-box" style={{ marginBottom: '20px' }}>
-                        <Card.Img variant="top" src="fero.png" alt="product" />
-                        <Card.Body>
-                            <Card.Title>Item 4</Card.Title>
-                            <Card.Text>
-                                Price: P40.00
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-                </Col>
-                <Col sm={12} md={6} lg={4}>
-                    <Card className="item-box" style={{ marginBottom: '20px' }}>
-                        <Card.Img variant="top" src="fero.png" alt="product" />
-                        <Card.Body>
-                            <Card.Title>Item 5</Card.Title>
-                            <Card.Text>
-                                Price: P40.00
-                            </Card.Text>
-                        </Card.Body>
-                    </Card >
-                </Col>
-                <Col sm={12} md={6} lg={4}>
-                    <Card className="item-box" style={{ marginBottom: '20px' }}>
-                        <Card.Img variant="top" src="fero.png" alt="product" />
-                        <Card.Body>
-                            <Card.Title>Item 6</Card.Title>
-                            <Card.Text>
-                                Price: P40.00
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-                </Col>
+                {searchResults.map((facility) => (
+                    <Col sm={12} md={6} lg={4} key={facility.id}>
+                        <Card className="item-box" style={{ marginBottom: '20px' }}>
+                            {/* Display facility information here */}
+                            <Card.Body>
+                                <Card.Title>{facility.name}</Card.Title>
+                                <Card.Text>
+                                    Provider: {facility.providerId}
+                                </Card.Text>
+                                <Card.Text>
+                                    Price: {facility.price}
+                                </Card.Text>
+                                {/* Add more details as needed */}
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                ))}
             </Row>
+
             <Button
                 type="button"
                 variant="outline-primary"
