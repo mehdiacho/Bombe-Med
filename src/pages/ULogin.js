@@ -10,18 +10,41 @@ const Login = () => {
     const navigate = useNavigate();
     const { signIn } = UserAuth();
 
+    /*async function authenticateUser(email, password) {
+        const url = `http://localhost:8383/users/sign-in`
+        try {
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ email, password }),
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                return data.token; // Assuming the API responds with a token
+            } else {
+                throw new Error("Authentication failed");
+            }
+        } catch (error) {
+            throw new Error("Error while communicating with the API: " + error.message);
+        }
+    }*/
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
         await delay(2000);
 
         try {
-            await signIn(email, password)
-            alert("Sign in successful")
-            navigate('/homepage')
-        } catch (e) {
+                // Authentication successful, you can save the token in local storage or a state management system
+                await signIn(email, password)
+                alert("Sign in successful");
+                navigate('/homepage');
 
-            alert("Sign in Unsuccessful")
+        } catch (e) {
+            alert("An error occurred: " + e.message);
         }
     };
 
@@ -76,7 +99,7 @@ const Login = () => {
                                     type="button"
                                     className={`btn btn-outline-primary`}
                                     onClick={signUpClick}
-                                    style={{ borderRadius: '20px', marginTop:'10px' }}
+                                    style={{ borderRadius: '20px', marginTop: '10px' }}
                                 >
                                     Create An Account
                                 </button>
