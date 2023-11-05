@@ -1,5 +1,5 @@
-import InventoryTable from '../components/inventoryTable'
-import Search from '../components/search';
+import InventoryTable from './components/inventoryTable'
+import Search from './components/search';
 
 const Inventory = () => {
   

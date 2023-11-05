@@ -1,4 +1,4 @@
-import CategoryTable from '../components/categoryTable';
+import CategoryTable from './components/categoryTable';
 import Search from '../components/search';
 
 const Category = () => {
