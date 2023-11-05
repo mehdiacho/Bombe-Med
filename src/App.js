@@ -11,7 +11,6 @@ import Batch from './pages/components/batch';
 function App() {
   return (
     <div className="d-flex">
-      <Sidebar />
       <AuthContextProvider>
         <Routes>
           <Route path="/" element={<Login />} />
