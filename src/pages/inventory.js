@@ -1,4 +1,4 @@
-import InventoryTable from './components/inventoryTable'
+import InventoryTable from '../pages/components/inventoryTable'
 import Search from './components/search';
 
 const Inventory = () => {

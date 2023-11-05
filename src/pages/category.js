@@ -1,5 +1,5 @@
-import CategoryTable from './components/categoryTable';
-import Search from '../components/search';
+import CategoryTable from '../pages/components/categoryTable';
+import Search from './components/search';
 
 const Category = () => {
   

@@ -15,17 +15,17 @@ function SideBar({ children }) {
       icon: <FaHome />
     },
     {
-      path: '/src/components/inventory.js',
+      path: '/inventory.js',
       name: 'Inventory',
       icon: <FaBookMedical />
     },
     {
-      path: '/src/components/category.js',
+      path: '/category.js',
       name: 'Medicine Category ',
       icon: <FaHouzz />
     },
     {
-      path: '/src/components/suppliers.js',
+      path: '/suppliers.js',
       name: 'Suppliers',
       icon: <FaAmbulance/>
     },

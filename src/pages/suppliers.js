@@ -1,5 +1,4 @@
-import '../components/suppliersTable';
-import SuppliersTable from './components/suppliersTable'
+import SuppliersTable from '../pages/components/suppliersTable';
 import Search from './components/search';
 
 const Suppliers = () => {
