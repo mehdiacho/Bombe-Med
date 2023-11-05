@@ -6,12 +6,10 @@ import Home from './pages/Home';
 import InventoryTable from './pages/components/inventoryTable';
 import SuppliersTable from './pages/components/suppliersTable';
 import CategoryTable from './pages/components/categoryTable';
-import Sidebar from './pages/components/Sidebar';
 
 function App() {
   return (
     <div className="d-flex">
-      <Sidebar />
       <AuthContextProvider>
         <Routes>
           <Route path="/" element={<Login />} />
