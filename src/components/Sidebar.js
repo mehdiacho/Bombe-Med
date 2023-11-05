@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {FaAmbulance,FaHouzz, FaBookMedical, FaList, FaBars, FaUsersCog, FaHome} from 'react-icons/fa'
+import {FaAmbulance,FaHouzz, FaBookMedical, FaList, FaBars, FaUsersCog, FaHome, FaBook} from 'react-icons/fa'
 import { NavLink} from 'react-router-dom';
 import './Sidebar.css';
 
@@ -10,28 +10,28 @@ function SideBar({ children }) {
 
   const menuItem = [
     {
-      path: '/admindashboard',
-      name: 'Inventory',
+      path: '/src/pages/Home.js',
+      name: 'Home',
       icon: <FaHome />
     },
     {
-      path: '/ght',
+      path: '/src/components/inventory.js',
+      name: 'Inventory',
+      icon: <FaBookMedical />
+    },
+    {
+      path: '/src/components/category.js',
       name: 'Medicine Category ',
       icon: <FaHouzz />
     },
     {
-      path: '/users',
-      name: 'Medicine Type',
+      path: '/src/components/suppliers.js',
+      name: 'Suppliers',
       icon: <FaAmbulance/>
     },
     {
-      path: '/administrators',
-      name: 'Medicine List ',
-      icon: <FaBookMedical/>
-    },
-    {
       path: '/bookings',
-      name: 'Expired Medicine List',
+      name: 'Expired Medicine',
       icon: <FaList/>
     },
     
