@@ -25,13 +25,8 @@ function SideBar({ children }) {
       icon: <FaHouzz />
     },
     {
-      path: '/suppliers.js',
-      name: 'Suppliers',
-      icon: <FaAmbulance/>
-    },
-    {
-      path: '/bookings',
-      name: 'Expired Medicine',
+      path: '/addBatch.js',
+      name: 'Add Batch',
       icon: <FaList/>
     },
     

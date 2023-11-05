@@ -1,7 +1,7 @@
 import React from 'react'
 import { UserAuth } from '../config/auth-context'
 import { useNavigate } from 'react-router-dom';
-import TrueSidebar from './components/TrueSidebar';
+import Sidebar from '../pages/components/Sidebar';
 
 const Home = () => {
   const { logout } = UserAuth();
@@ -9,7 +9,7 @@ const Home = () => {
 
   return (
     <div>
-     
+      <Sidebar />
       <div style={{ flex: 1, display: 'flex', justifyContent: 'center' }}></div>
    </div>
   )
