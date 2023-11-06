@@ -7,7 +7,7 @@ import Signup from './pages/Signup';
 import Prescription from './pages/Prescription';
 import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
-import Login from './pages/Login';
+import ALogin from './pages/ALogin';
 import Home from './pages/Home';
 import InventoryTable from './pages/components/inventoryTable';
 import SuppliersTable from './pages/components/suppliersTable';
@@ -25,14 +25,13 @@ function App() {
                     <Route path={'/prescription'} element={<Prescription />} />
                     <Route path={'/cart'} element={<Cart />} />
                     <Route path={'/checkout'} element={<Checkout />} />
-                    <Route path="/" element={<Login />} />
+                    <Route path="/admin" element={<ALogin/>} />
                     <Route path="/home" element={<Home />} />
                     <Route path="/inventory.js" element={<InventoryTable />} />
                     <Route path="/category.js" element={<CategoryTable />} />
                     <Route path="/suppliers.js" element={<SuppliersTable />} />
                 </Routes>
             </AuthContextProvider>
-
         </div>
     );
 }

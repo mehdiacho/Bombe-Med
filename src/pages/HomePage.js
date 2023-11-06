@@ -1,6 +1,5 @@
 import React from 'react'
 import TopNav from './components/TopNav'
-import 'react-multi-carousel/lib/styles.css';
 import { Button, Card, Col, Row } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
 

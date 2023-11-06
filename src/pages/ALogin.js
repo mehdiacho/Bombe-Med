@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../config/auth-context";
 
-const ULogin = () => {
+const ALogin = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -90,4 +90,4 @@ const ULogin = () => {
         </div>
     )
 }
-export default ULogin
+export default ALogin
