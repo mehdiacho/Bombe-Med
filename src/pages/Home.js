@@ -1,28 +1,18 @@
 import React from 'react'
 import { UserAuth } from '../config/auth-context'
 import { useNavigate } from 'react-router-dom';
+import ATopNav from './components/ATopNav'
+import Sidebar from './components/Sidebar'
 
 const Home = () => {
   const { logout } = UserAuth();
   const navigate = useNavigate();
 
-  const handleLogout = async () => {
-    try {
-      await logout();
-      navigate('/');
-      alert('Logging out')
-    } catch (e) {
-      console.log("There is an error");
-    }
-  };
-
   return (
-    <div>
-      <div>Home</div>
-      <button type="submit"
-        className={`btn btn-outline-warning`}
-        style={{ borderRadius: '20px' }} onClick={handleLogout}> Log out</button>
-    </div>
+    <div className={"container-fluid min-vh-100 bg-light d-flex flex-column home-page"}>
+      <ATopNav/>
+      <Sidebar/>
+   </div>
   )
 }
 
